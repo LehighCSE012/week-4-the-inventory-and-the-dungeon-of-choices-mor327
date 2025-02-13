@@ -120,7 +120,7 @@ def main():
             ("You cracked the code!", "The chest remains stubbornly locked.", -5))
     ]
 
-    #simulate the combat encounter from Week 3 
+    #simulate the combat encounter from Week 3
     print("You engage in a combat encounter!")
     combat_success = random.choice([True, False])
     if combat_success:
