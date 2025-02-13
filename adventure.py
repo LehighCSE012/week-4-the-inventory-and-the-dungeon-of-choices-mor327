@@ -17,7 +17,7 @@ def acquire_item(inventory, item):
     Returns:
         list: The updated inventory with the new item added.
     """
-    inventory.append(item)  # Using append() to add an item to the inventory
+    inventory.append(item)  #use append() to add an item to the inventory
     print(f"You acquired a {item}!")
     return inventory
 
@@ -29,7 +29,7 @@ def display_inventory(inventory):
     Args:
         inventory (list): The player's inventory to display.
     """
-    if not inventory:  # Check if inventory is empty
+    if not inventory:  #check if inventory is empty
         print("Your inventory is empty.")
     else:
         print("Your inventory:")
@@ -56,41 +56,41 @@ def enter_dungeon(player_health, inventory, dungeon_rooms):
         room_description, item, challenge_type, challenge_outcome = room
         print(f"\n{room_description}")
 
-        # If there's an item in the room, acquire it
+        #if there's an item in the room, acquire it
         if item:
-            print(f"You found a {item} in the room.")  # Add this line to match the test
+            print(f"You found a {item} in the room.")  #add this line to match the test
             inventory = acquire_item(inventory, item)
 
-        # Handle the challenge in the room
+        #handle the challenge in the room
         if challenge_type == "puzzle":
             print("You encounter a puzzle!")
             choice = input("Do you want to 'solve' or 'skip' the puzzle? ").strip().lower()
             if choice == "solve":
                 success = random.choice([True, False])
                 if success:
-                    print(challenge_outcome[0])  # Success message
+                    print(challenge_outcome[0])  #success message
                 else:
-                    print(challenge_outcome[1])  # Failure message
-                player_health += challenge_outcome[2]  # Update health
+                    print(challenge_outcome[1])  #failure message
+                player_health += challenge_outcome[2]  #update health
         elif challenge_type == "trap":
             print("You see a potential trap!")
             choice = input("Do you want to 'disarm' or 'bypass' the trap? ").strip().lower()
             if choice == "disarm":
                 success = random.choice([True, False])
                 if success:
-                    print(challenge_outcome[0])  # Success message
+                    print(challenge_outcome[0])  #success message
                 else:
-                    print(challenge_outcome[1])  # Failure message
-                    player_health += challenge_outcome[2]  # Update health
+                    print(challenge_outcome[1])  #failure message
+                    player_health += challenge_outcome[2]  #update health
         elif challenge_type == "none":
             print("There doesn't seem to be a challenge in this room. You move on.")
 
-        # Ensure player health doesn't drop below zero
+        #ensure player health doesn't drop below zero
         if player_health <= 0:
             player_health = 0
             print("You are barely alive!")
 
-        # Display the updated inventory after each room
+        #display the updated inventory after each room
         display_inventory(inventory)
 
     print(f"\nYou exit the dungeon with {player_health} health.")
@@ -105,11 +105,11 @@ def main():
     and simulates a series of challenges. The game ends when the player exits 
     the dungeon or is defeated in combat.
     """
-    # Initial game setup
+    #initial game setup
     player_health = 100
     inventory = []
 
-    # Dungeon setup
+    #dungeon setup
     dungeon_rooms = [
         ("A dusty old library", "key", "puzzle",
             ("You solved the puzzle!", "The puzzle remains unsolved.", -5)),
@@ -120,24 +120,23 @@ def main():
             ("You cracked the code!", "The chest remains stubbornly locked.", -5))
     ]
 
-    # Simulate the combat encounter from Week 3 (placeholder logic)
+    #simulate the combat encounter from Week 3 
     print("You engage in a combat encounter!")
     combat_success = random.choice([True, False])
     if combat_success:
         print("You survived the combat!")
-        player_health -= random.randint(5, 20)  # Simulate health loss from combat
+        player_health -= random.randint(5, 20)  #simulate health loss from combat
     else:
         print("You were defeated in combat. Game over.")
         return
 
-    # Ensure health is non-negative
+    #ensure health is non-negative
     player_health = max(0, player_health)
 
-    # Enter the dungeon if the player survives
+    #enter the dungeon if the player survives
     if player_health > 0:
         player_health, inventory = enter_dungeon(player_health, inventory, dungeon_rooms)
 
-    # End of the game
     print(f"Game over. Final health: {player_health}. Final inventory: {inventory}")
 
 if __name__ == "__main__":
