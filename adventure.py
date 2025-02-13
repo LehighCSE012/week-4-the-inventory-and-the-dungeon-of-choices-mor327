@@ -1,3 +1,9 @@
+"""
+An enhancement of the previous text-based adventure game that implements
+an inventory system using lists and incorporating tuples to represent 
+fixed game elements.
+"""
+
 import random
 
 def acquire_item(inventory, item):
@@ -64,10 +70,13 @@ def main():
 
     # Dungeon setup
     dungeon_rooms = [
-        ("A dusty old library", "key", "puzzle", ("You solved the puzzle!", "The puzzle remains unsolved.", -5)),
-        ("A narrow passage with a creaky floor", None, "trap", ("You skillfully avoid the trap!", "You triggered a trap!", -10)),
+        ("A dusty old library", "key", "puzzle", 
+            ("You solved the puzzle!", "The puzzle remains unsolved.", -5)),
+        ("A narrow passage with a creaky floor", None, "trap", 
+            ("You skillfully avoid the trap!", "You triggered a trap!", -10)),
         ("A grand hall with a shimmering pool", "healing potion", "none", None),
-        ("A small room with a locked chest", "treasure", "puzzle", ("You cracked the code!", "The chest remains stubbornly locked.", -5))
+        ("A small room with a locked chest", "treasure", "puzzle", 
+            ("You cracked the code!", "The chest remains stubbornly locked.", -5))
     ]
 
     # Simulate the combat encounter from Week 3 (placeholder logic)
