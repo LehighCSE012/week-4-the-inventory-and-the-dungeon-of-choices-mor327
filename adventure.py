@@ -7,11 +7,27 @@ fixed game elements.
 import random
 
 def acquire_item(inventory, item):
+    """
+    Adds an item to the player's inventory and prints a message indicating the acquisition.
+    
+    Args:
+        inventory (list): The player's inventory.
+        item (str): The item to be added to the inventory.
+    
+    Returns:
+        list: The updated inventory with the new item added.
+    """
     inventory.append(item)  # Using append() to add an item to the inventory
     print(f"You found a {item} in the room!")
     return inventory
 
 def display_inventory(inventory):
+    """
+    Displays the contents of the player's inventory. If the inventory is empty, a message is printed.
+    
+    Args:
+        inventory (list): The player's inventory to display.
+    """
     if not inventory:  # Check if inventory is empty
         print("Your inventory is empty.")
     else:
@@ -20,6 +36,21 @@ def display_inventory(inventory):
             print(f"{i}. {item}")
 
 def enter_dungeon(player_health, inventory, dungeon_rooms):
+    """
+    Simulates a dungeon exploration where the player moves through various rooms,
+    acquires items, and faces challenges (puzzles, traps, or no challenge).
+    
+    Args:
+        player_health (int): The player's current health.
+        inventory (list): The player's current inventory.
+        dungeon_rooms (list): A list of tuples, each representing a room with 
+                               its description, item (if any), challenge type, 
+                               and challenge outcome.
+    
+    Returns:
+        tuple: A tuple containing the updated player health and inventory after 
+               exploring all the rooms in the dungeon.
+    """
     for room in dungeon_rooms:
         room_description, item, challenge_type, challenge_outcome = room
         print(f"\n{room_description}")
@@ -64,18 +95,26 @@ def enter_dungeon(player_health, inventory, dungeon_rooms):
     return player_health, inventory
 
 def main():
+    """
+    Main function that sets up the game, initiates the dungeon exploration, 
+    and handles combat encounters.
+    
+    It sets the player's initial health and inventory, defines the dungeon rooms, 
+    and simulates a series of challenges. The game ends when the player exits 
+    the dungeon or is defeated in combat.
+    """
     # Initial game setup
     player_health = 100
     inventory = []
 
     # Dungeon setup
     dungeon_rooms = [
-        ("A dusty old library", "key", "puzzle", 
+        ("A dusty old library", "key", "puzzle",
             ("You solved the puzzle!", "The puzzle remains unsolved.", -5)),
-        ("A narrow passage with a creaky floor", None, "trap", 
+        ("A narrow passage with a creaky floor", None, "trap",
             ("You skillfully avoid the trap!", "You triggered a trap!", -10)),
         ("A grand hall with a shimmering pool", "healing potion", "none", None),
-        ("A small room with a locked chest", "treasure", "puzzle", 
+        ("A small room with a locked chest", "treasure", "puzzle",
             ("You cracked the code!", "The chest remains stubbornly locked.", -5))
     ]
 
