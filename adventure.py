@@ -23,7 +23,8 @@ def acquire_item(inventory, item):
 
 def display_inventory(inventory):
     """
-    Displays the contents of the player's inventory. If the inventory is empty, a message is printed.
+    Displays the contents of the player's inventory. 
+    If the inventory is empty, a message is printed.
     
     Args:
         inventory (list): The player's inventory to display.
