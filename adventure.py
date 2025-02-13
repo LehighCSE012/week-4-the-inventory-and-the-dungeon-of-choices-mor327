@@ -2,7 +2,7 @@ import random
 
 def acquire_item(inventory, item):
     inventory.append(item)  # Using append() to add an item to the inventory
-    print(f"You acquired a {item}!")
+    print(f"You found a {item} in the room!")
     return inventory
 
 def display_inventory(inventory):
@@ -32,7 +32,7 @@ def enter_dungeon(player_health, inventory, dungeon_rooms):
                     print(challenge_outcome[0])  # Success message
                 else:
                     print(challenge_outcome[1])  # Failure message
-                    player_health += challenge_outcome[2]  # Update health
+                player_health += challenge_outcome[2]  # Update health
         elif challenge_type == "trap":
             print("You see a potential trap!")
             choice = input("Do you want to 'disarm' or 'bypass' the trap? ").strip().lower()
