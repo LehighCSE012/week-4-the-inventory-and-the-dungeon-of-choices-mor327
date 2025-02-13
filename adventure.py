@@ -58,6 +58,7 @@ def enter_dungeon(player_health, inventory, dungeon_rooms):
 
         # If there's an item in the room, acquire it
         if item:
+            print(f"You found a {item} in the room.")  # Add this line to match the test
             inventory = acquire_item(inventory, item)
 
         # Handle the challenge in the room
