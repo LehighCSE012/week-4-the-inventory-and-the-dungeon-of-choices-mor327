@@ -18,7 +18,7 @@ def acquire_item(inventory, item):
         list: The updated inventory with the new item added.
     """
     inventory.append(item)  # Using append() to add an item to the inventory
-    print(f"You found a {item} in the room.")
+    print(f"You acquired a {item}!")
     return inventory
 
 def display_inventory(inventory):
